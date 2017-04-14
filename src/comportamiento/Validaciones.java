@@ -34,8 +34,8 @@ public class Validaciones {
         return valido;
     }
 
-    public static void rfc(KeyEvent evt, int l, JTextField jtf) {
-        if (jtf.getText().length() <= l) {
+    public static void rfc(KeyEvent evt, int length, JTextField jtf) {
+        if (jtf.getText().length() <= length) {
             validarRFC(jtf.getText());
         } else {
             evt.consume();
@@ -103,7 +103,7 @@ public class Validaciones {
             evt.consume();
         }
     }
-    
+
     /**
     @param evt  Evento
     @param l    Longitud máxima
@@ -122,11 +122,11 @@ public class Validaciones {
 
     /**
     @param evt  Evento
-    @param l    Longitud máxima
+    @param length    Longitud máxima
     @param jtf  Nombre de la caja de texto
      */
-    public static void alfabetico(KeyEvent evt, int l, JTextField jtf) {
-        if (jtf.getText().length() < l) {
+    public static void alfabetico(KeyEvent evt, int length, JTextField jtf) {
+        if (jtf.getText().length() < length) {
             if ((evt.getKeyChar() < 'a' || evt.getKeyChar() > 'z')
                     && (evt.getKeyChar() < 'A' || evt.getKeyChar() > 'Z')
                     && evt.getKeyCode() != 8 && evt.getKeyChar() != ' '
@@ -145,11 +145,29 @@ public class Validaciones {
 
     /**
     @param evt  Evento
-    @param l    Longitud máxima
+    @param length    Longitud máxima
+    @param jtf  Nombre de la caja de texto
+     * @param init
+     * @param fin
+     */
+    public static void alfabeticoMayusculas(KeyEvent evt, int length, JTextField jtf, char init, char fin) {
+        if (jtf.getText().length() < length) {
+            if ((evt.getKeyChar() < init 
+                    || evt.getKeyChar() > fin)) {
+                evt.setKeyChar((char) 8);
+            }
+        } else {
+            evt.consume();
+        }
+    }
+
+    /**
+    @param evt  Evento
+    @param length    Longitud máxima
     @param jtf  Nombre de la caja de texto
      */
-    public static void alfanumerico(KeyEvent evt, int l, JTextField jtf) {
-        if (jtf.getText().length() < l) {
+    public static void alfanumerico(KeyEvent evt, int length, JTextField jtf) {
+        if (jtf.getText().length() < length) {
             if ((evt.getKeyChar() < 'a' || evt.getKeyChar() > 'z')
                     && (evt.getKeyChar() < 'A' || evt.getKeyChar() > 'Z')
                     && (evt.getKeyChar() < '0' || evt.getKeyChar() > '9')
@@ -164,11 +182,11 @@ public class Validaciones {
 
     /**
     @param evt  Evento
-    @param l    Longitud máxima
+    @param length    Longitud máxima
     @param jtf  Nombre de la caja de texto
      */
-    public static void flotante(KeyEvent evt, int l, JTextField jtf) {
-        if (jtf.getText().length() < l) {
+    public static void flotante(KeyEvent evt, int length, JTextField jtf) {
+        if (jtf.getText().length() < length) {
             if ((evt.getKeyChar() < '0' || evt.getKeyChar() > '9')
                     && evt.getKeyCode() != 8 && evt.getKeyChar() != '.') {
                 evt.setKeyChar((char) 8);
@@ -177,14 +195,14 @@ public class Validaciones {
             evt.consume();
         }
     }
-    
+
     /**
     @param evt  Evento
-    @param l    Longitud máxima
+    @param length    Longitud máxima
     @param jtf  Nombre de la caja de texto
      */
-    public static void flotanteNegativo(KeyEvent evt, int l, JTextField jtf) {
-        if (jtf.getText().length() < l) {
+    public static void flotanteNegativo(KeyEvent evt, int length, JTextField jtf) {
+        if (jtf.getText().length() < length) {
             if ((evt.getKeyChar() < '0' || evt.getKeyChar() > '9')
                     && evt.getKeyCode() != 8 && evt.getKeyChar() != '.' && evt.getKeyChar() != '-') {
                 evt.setKeyChar((char) 8);
@@ -196,11 +214,11 @@ public class Validaciones {
 
     /**
     @param evt  Evento
-    @param l    Longitud máxima
+    @param length    Longitud máxima
     @param jtf  Nombre de la caja de texto
      */
-    public static void correo(KeyEvent evt, int l, JTextField jtf) {
-        if (jtf.getText().length() < l) {
+    public static void correo(KeyEvent evt, int length, JTextField jtf) {
+        if (jtf.getText().length() < length) {
             if ((evt.getKeyChar() < 'a' || evt.getKeyChar() > 'z')
                     && (evt.getKeyChar() < '0' || evt.getKeyChar() > '9')
                     && evt.getKeyCode() != 8
@@ -215,11 +233,11 @@ public class Validaciones {
 
     /**
     @param evt  Evento
-    @param l    Longitud máxima
+    @param length    Longitud máxima
     @param jtf  Nombre de la caja de texto
      */
-    public static void hora(KeyEvent evt, int l, JTextField jtf) {
-        if (jtf.getText().length() < l) {
+    public static void hora(KeyEvent evt, int length, JTextField jtf) {
+        if (jtf.getText().length() < length) {
             if ((evt.getKeyChar() < '0' || evt.getKeyChar() > '9')
                     && evt.getKeyCode() != 8 && evt.getKeyChar() != ':') {
                 evt.setKeyChar((char) 8);
@@ -231,11 +249,11 @@ public class Validaciones {
 
     /**
     @param evt  Evento
-    @param l    Longitud máxima
+    @param length    Longitud máxima
     @param jtf  Nombre de la caja de texto
      */
-    public static void fecha(KeyEvent evt, int l, JTextField jtf) {
-        if (jtf.getText().length() < l) {
+    public static void fecha(KeyEvent evt, int length, JTextField jtf) {
+        if (jtf.getText().length() < length) {
             if ((evt.getKeyChar() < '0' || evt.getKeyChar() > '9')
                     && evt.getKeyCode() != 8 && evt.getKeyChar() != '/') {
                 evt.setKeyChar((char) 8);
@@ -245,18 +263,18 @@ public class Validaciones {
         }
     }
 
-    public static boolean vFlotante(String s) {
+    public static boolean vFlotante(String str) {
         try {
-            double x = Double.parseDouble(s);
+            double x = Double.parseDouble(str);
             return true;
         } catch (Exception e) {
             return false;
         }
     }
 
-    public static boolean vEntero(String s) {
+    public static boolean vEntero(String str) {
         try {
-            double x = Integer.parseInt(s);
+            double x = Integer.parseInt(str);
             return true;
         } catch (Exception e) {
             return false;

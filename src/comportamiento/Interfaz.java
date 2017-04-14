@@ -51,9 +51,9 @@ public class Interfaz {
         } catch (Exception e) {
             System.out.println("Error " + e.getMessage());
         }
-
+        
     }
-
+    
     public static void habilitarBoton(JTextField tf, JButton jb) {
         jb.setEnabled(false);
         try {
@@ -64,7 +64,7 @@ public class Interfaz {
             System.out.println(e.getMessage());
         }
     }
-
+    
     public static void habilitarBoton2(Container container, JButton jb) {
         try {
             for (Component c : container.getComponents()) {
@@ -80,10 +80,10 @@ public class Interfaz {
                 }
             }
         } catch (Exception e) {
-
+            
         }
     }
-
+    
     public static boolean checarVacios(Container container) {
         boolean camposLlenos = false;
         try {
@@ -104,7 +104,7 @@ public class Interfaz {
         }
         return camposLlenos;
     }
-
+    
     public static boolean camposLlenos(Object... objs) {
         boolean camposLlenos = true;
         for (Object obj : objs) {
@@ -120,7 +120,7 @@ public class Interfaz {
         boolean campos2 = camposLlenos;
         return campos2;
     }
-
+    
     public static void cambia(Object obj) {
         if (obj instanceof JTextField) {
             JTextField j = (JTextField) obj;
@@ -135,12 +135,12 @@ public class Interfaz {
             j.requestFocus();
         }
     }
-
+    
     public static void selecciona(JTextField jt) {
         jt.setSelectionStart(0);
         jt.setSelectionEnd(jt.getText().length());
     }
-
+    
     public static void etiqueta(Object... objs) {
         try {
             for (int i = 0; i < objs.length; i += 2) {
@@ -153,7 +153,7 @@ public class Interfaz {
             System.out.println(e.getMessage());
         }
     }
-
+    
     public static void limpiarElementos(Object... objs) {
         try {
             for (Object obj : objs) {
@@ -163,6 +163,14 @@ public class Interfaz {
                     ((JTextArea) obj).setText("");
                 } else if (obj instanceof JComboBox) {
                     ((JComboBox) obj).setSelectedIndex(0);
+                } else if (obj instanceof JRadioButton) {
+                    ((JRadioButton) obj).setSelected(false);
+                } else if (obj instanceof JCheckBox) {
+                    ((JCheckBox) obj).setSelected(false);
+                } else if (obj instanceof ButtonGroup) {
+                    ((ButtonGroup) obj).clearSelection();
+                } else if (obj instanceof JButton) {
+                    ((JButton) obj).setEnabled(false);
                 } else if (obj instanceof JTable) {
                     ((JTable) obj).setModel(new DefaultTableModel());
                 }
@@ -192,5 +200,5 @@ public class Interfaz {
             }
         }
     }
-
+    
 }

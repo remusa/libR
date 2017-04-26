@@ -20,7 +20,7 @@ import java.util.Stack;
 public class PostfijoAritmetico {
     
     public static void main(String[] args) {
-        System.out.println(convertiraPostfijo("A*B-(C+D)+E"));
+        System.out.println(convertiraPostfijo("(x*1-y/y+x+0+y/1+(x-(x-0)*1)/1+w)+(x+3*y)/(x+3*y)"));
     }
 
     private static boolean esOperador(char c) {

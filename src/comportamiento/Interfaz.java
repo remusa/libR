@@ -51,7 +51,6 @@ public class Interfaz {
         } catch (Exception e) {
             System.out.println("Error " + e.getMessage());
         }
-        
     }
     
     public static void habilitarBoton(JTextField tf, JButton jb) {

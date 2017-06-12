@@ -22,6 +22,10 @@ public class Mensajes {
     public static void falla(JFrame jf) {
         JOptionPane.showMessageDialog(jf, "La acción solicitada no se pudo concretar, verifique por favor");
     }
+    
+    public static void mensajes(JFrame jf, String s) {
+        JOptionPane.showMessageDialog(jf, s);
+    }
 
     public static void falla(JFrame jf, String s) {
         JOptionPane.showMessageDialog(jf, s);
